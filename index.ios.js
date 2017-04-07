@@ -14,32 +14,14 @@ import {
   TextInput,
   Image
 } from 'react-native';
-
+var Login = require('./Login');
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Image source={require('./logo.png')}/>
-             <TextInput
-                style = {styles.input}
-                placeholder = 'Latitude'
-                autoCapitalize = 'none'
-             />
-             <TextInput
-                style = {styles.input}
-                placeholder = 'Longitude'
-                autoCapitalize = 'none'
-             />
-             <TouchableHighlight
-                style = {styles.submit}
-                //onPress = { () => props.login(props.email, props.password)}
-              >
-                <Text>
-                   Submit
-                </Text>
-             </TouchableHighlight>
-          </View>
+      <Login/>
+      </View>
     );
   }
 }
