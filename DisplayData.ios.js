@@ -14,14 +14,20 @@ var REQUEST_URL = 'http://api.geonames.org/earthquakesJSON?north=44.1&south=-9.9
 
 class DisplayData extends Component {
 
-  state = { earthquakes: [] };
 
-  componentWillMount() {
+  constructor(props){
+    super(props)
+    this.state = {
+      earthquakes: []
+    };
+  }
+
+  componentDidMount() {
     fetch(REQUEST_URL)
     .then((response) => response.json())
-    .then((responseData) => this.setState({ articles: responseData.earthquakes }))
+    .then((responseData) => this.setState({ earthquakes: responseData.earthquakes }))
     .catch(function(error) {
-    console.warn(error);
+      console.warn(error);
     });
   }
 
@@ -29,7 +35,7 @@ class DisplayData extends Component {
     return (
       <View>
         {this.state.earthquakes.map(earthquake => (
-          <Text>{earthquakes.datetime}</Text>
+          <Text>{earthquake.datetime}</Text>
         ))}
       </View>
     );
