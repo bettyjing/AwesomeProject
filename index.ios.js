@@ -12,16 +12,28 @@ import {
   View,
   TouchableHighlight,
   TextInput,
-  Image
+  Image,
+  Navigator
+
 } from 'react-native';
 var Login = require('./Login');
+var Display = require('./DisplayData');
 
 export default class AwesomeProject extends Component {
   render() {
     return (
-      <View style = {styles.container}>
-      <Login/>
-      </View>
+      <Navigator
+          initialRoute={{name: 'LoginView', component: Login}}
+          configureScene={() => {
+              return Navigator.SceneConfigs.FloatFromRight;
+          }}
+          renderScene={(route, navigator) => {
+              console.log(route, navigator);
+              if (route.component) {
+                  return React.createElement(route.component, { navigator });
+              }
+          }}
+       />
     );
   }
 }

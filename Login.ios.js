@@ -8,8 +8,15 @@ import {
   TextInput,
   Image
 } from 'react-native';
+var DisplayData = require('./DisplayData');
 
 export default class Login extends Component{
+  onPressDisplayData() {
+    this.props.navigator.push({
+        name: 'DisplayView',
+        component: DisplayData
+    });
+  }
   render() {
     return (
       <View style = {styles.container}>
@@ -26,7 +33,7 @@ export default class Login extends Component{
              />
              <TouchableHighlight
                 style = {styles.submit}
-                //onPress = { () => props.login(props.email, props.password)}
+                onPress = {() => this.onPressDisplayData()}
               >
                 <Text>
                    Submit
