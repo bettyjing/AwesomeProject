@@ -1,2 +1,2 @@
-global.Latitude;
-global.Longitude;
+global.Latitude = '5';
+global.Longitude = '5';

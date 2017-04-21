@@ -20,15 +20,11 @@ export default class Login extends Component{
      Longitude: '',
    }
  }
- _handlePress(event) {
-    global.Latitude = this.state.Latitude;
-    global.Longitude = this.state.Longitude;
-}
-
 
   onPressDisplayData() {
     global.Latitude = this.state.Latitude;
     global.Longitude = this.state.Longitude;
+    console.log(global.Latitude);
     this.props.navigator.push({
         name: 'DisplayView',
         component: DisplayData
