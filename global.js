@@ -1,0 +1,2 @@
+global.Latitude;
+global.Longitude;

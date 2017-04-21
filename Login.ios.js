@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './global.js'
 import {
   AppRegistry,
   StyleSheet,
@@ -11,7 +12,23 @@ import {
 var DisplayData = require('./DisplayData');
 
 export default class Login extends Component{
+  constructor(props){
+   super(props)
+
+   this.state = {
+     Latitude: '',
+     Longitude: '',
+   }
+ }
+ _handlePress(event) {
+    global.Latitude = this.state.Latitude;
+    global.Longitude = this.state.Longitude;
+}
+
+
   onPressDisplayData() {
+    global.Latitude = this.state.Latitude;
+    global.Longitude = this.state.Longitude;
     this.props.navigator.push({
         name: 'DisplayView',
         component: DisplayData
@@ -25,15 +42,18 @@ export default class Login extends Component{
                 style = {styles.input}
                 placeholder = 'Latitude'
                 autoCapitalize = 'none'
+                onChangeText={(text) => this.setState({Latitude:text})}
              />
              <TextInput
                 style = {styles.input}
                 placeholder = 'Longitude'
                 autoCapitalize = 'none'
+                onChangeText={(text) => this.setState({Longitude:text})}
              />
              <TouchableHighlight
                 style = {styles.submit}
-                onPress = {() => this.onPressDisplayData()}
+                onPress = {() => this.onPressDisplayData()
+                }
               >
                 <Text>
                    Submit
