@@ -37,12 +37,12 @@ class DisplayData extends Component {
         <ListView
           dataSource = {this.state.earthquakes}
           renderRow={(rowData) => (
-            <View>
-              <Text>{rowData.src}</Text>
-              <Text>{rowData.datetime}</Text>
-              <Text>{rowData.magnitude}</Text>
-              <Text>{rowData.eqid}</Text>
-              <Text>{rowData.depth}</Text>
+            <View style={{flex: 1, paddingTop: 10, paddingBottom: 10, borderWidth: 0.5, paddingLeft: 10, borderColor: '#D3D3D3'}}>
+              <Text style={{fontSize: 25}}>{rowData.src}</Text>
+              <Text>DateTime: {rowData.datetime}</Text>
+              <Text>Magnitude: {rowData.magnitude}</Text>
+              <Text>EqID: {rowData.eqid}</Text>
+              <Text>Depth: {rowData.depth}</Text>
             </View>
           )}
         />
