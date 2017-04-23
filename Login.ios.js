@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './global.js'
 import {
   AppRegistry,
   StyleSheet,
@@ -22,12 +21,13 @@ export default class Login extends Component{
  }
 
   onPressDisplayData() {
-    global.Latitude = this.state.Latitude;
-    global.Longitude = this.state.Longitude;
-    console.log(global.Latitude);
     this.props.navigator.push({
         name: 'DisplayView',
-        component: DisplayData
+        component: DisplayData,
+        passProps: {
+          Latitude: this.state.Latitude,
+          Longitude: this.state.Latitude,
+      }
     });
   }
   render() {

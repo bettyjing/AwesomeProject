@@ -1,7 +1,6 @@
 import React, {
   Component,
 } from 'react';
-import './global.js'
 import {
   AppRegistry,
   Image,
@@ -10,9 +9,9 @@ import {
   Text,
   View,
 } from 'react-native';
+var Login = require('./Login');
 
-//var REQUEST_URL = 'api.geonames.org/earthquakesJSON?north='+global.Latitude+'&south='+global.Latitude+'&east='+global.Longtitude+'&west='+global.Longtitude+'&username=bettyjing';
-var REQUEST_URL = 'http://api.geonames.org/earthquakesJSON?north='+global.Latitude+'&south='+-9.9+'&east='+-22.4+'&west='+55.2+'&username=bettyjing'
+var REQUEST_URL = 'http://api.geonames.org/earthquakesJSON?north='+5+'&south='+-9.9+'&east='+-22.4+'&west='+55.2+'&username=bettyjing'
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class DisplayData extends Component {
 
@@ -36,6 +35,7 @@ class DisplayData extends Component {
   render() {
     return (
       <View>
+       <Text>id: {this.props.Latitude}</Text>
         <ListView
           dataSource = {this.state.earthquakes}
           renderRow={(rowData) => (

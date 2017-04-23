@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -30,7 +24,7 @@ export default class AwesomeProject extends Component {
           renderScene={(route, navigator) => {
               console.log(route, navigator);
               if (route.component) {
-                  return React.createElement(route.component, { navigator });
+                  return React.createElement(route.component, { ...this.props, ...route.passProps, navigator, route });
               }
           }}
        />
