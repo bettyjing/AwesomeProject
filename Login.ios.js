@@ -26,7 +26,7 @@ export default class Login extends Component{
         component: DisplayData,
         passProps: {
           Latitude: this.state.Latitude,
-          Longitude: this.state.Latitude,
+          Longitude: this.state.Longitude,
       }
     });
   }

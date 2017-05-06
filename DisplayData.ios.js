@@ -11,12 +11,13 @@ import {
 } from 'react-native';
 var Login = require('./Login');
 
-var REQUEST_URL = 'http://api.geonames.org/earthquakesJSON?north='+5+'&south='+-9.9+'&east='+-22.4+'&west='+55.2+'&username=bettyjing'
+
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class DisplayData extends Component {
 
   constructor(props){
     super(props)
+    console.log(this.props)
 
     this.state = {
       earthquakes: ds.cloneWithRows([])
@@ -24,6 +25,8 @@ class DisplayData extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.Latitude)
+    var REQUEST_URL = 'http://api.geonames.org/earthquakesJSON?north='+(this.props.Latitude+10)+'&south='+-(this.props.Latitude-10)+'&east='+-(this.props.Longitude+10)+'&west='+(this.props.Longitude-10)+'&username=bettyjing'
     fetch(REQUEST_URL)
     .then((response) => response.json())
     .then((responseData) => this.setState({ earthquakes: ds.cloneWithRows(responseData.earthquakes) }))
@@ -35,12 +38,13 @@ class DisplayData extends Component {
   render() {
     return (
       <View>
-       //<Text>id: {this.props.Latitude}</Text>
         <ListView
           dataSource = {this.state.earthquakes}
           renderRow={(rowData) => (
             <View style={{flex: 1, paddingTop: 10, paddingBottom: 10, borderWidth: 0.5, paddingLeft: 10, borderColor: '#D3D3D3'}}>
               <Text style={{fontSize: 25}}>{rowData.src}</Text>
+              <Text>Longitude: {rowData.lng}</Text>
+              <Text>Latitude: {rowData.lat}</Text>
               <Text>DateTime: {rowData.datetime}</Text>
               <Text>Magnitude: {rowData.magnitude}</Text>
               <Text>EqID: {rowData.eqid}</Text>
