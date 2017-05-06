@@ -35,7 +35,7 @@ class DisplayData extends Component {
   render() {
     return (
       <View>
-       <Text>id: {this.props.Latitude}</Text>
+       //<Text>id: {this.props.Latitude}</Text>
         <ListView
           dataSource = {this.state.earthquakes}
           renderRow={(rowData) => (
